@@ -35,8 +35,11 @@ var buildStyleInterpolator = require('./buildStyleInterpolator');
 var merge = require('./merge');
 
 var SCREEN_WIDTH = Dimensions.get('window').width;
+var SCREEN_HEIGHT = Dimensions.get('window').height;
+var isIphoneX = SCREEN_WIDTH === 812 || SCREEN_HEIGHT === 812;
 var NAV_BAR_HEIGHT = 44;
-var STATUS_BAR_HEIGHT = 20;
+// Temporary fix in order to make navigator working properly in SafeAreaView
+var STATUS_BAR_HEIGHT = isIphoneX ? 0 : 20;
 var NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
 var BASE_STYLES = {
